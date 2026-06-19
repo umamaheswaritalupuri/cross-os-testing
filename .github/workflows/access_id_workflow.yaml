@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print var
-        run: echo 'ACCESS_ID is ${{ vars.ACCESS_ID }}'
+        run: echo 'The ACCESS_ID is ${{ vars.ACCESS_ID }}'
