@@ -22,8 +22,3 @@ jobs:
 
       - name: Pytest check
         run: pytest --version
-
-
-
-         - name: Dependency installation
-        run:  pip install pytest flake8
