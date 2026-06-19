@@ -1,0 +1,10 @@
+name: os-test1
+
+on: push
+
+jobs:
+  linux-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print var
+        run: echo 'ACCESS_ID is ${{ vars.ACCESS_ID }}'
