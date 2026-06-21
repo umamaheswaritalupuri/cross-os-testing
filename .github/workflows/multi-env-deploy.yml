@@ -1,0 +1,41 @@
+name: Deploy Application
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target deployment environment'
+        required: true
+        default: 'dev'  
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
+jobs:
+  job1:
+    runs-on: ubhuntu-latest
+    steps:
+      - name: job name
+        run: |
+           TARGET_ENV="${{ inputs.environment }}"
+          
+          # 2. If no manual input (Automated Push/PR), resolve based on branch name
+           if [ -z "$TARGET_ENV" ]; then
+             BRANCH_NAME="${{ github.base_ref || github.ref_name }}"
+             if [ "$BRANCH_NAME" = "main" ]; then
+               TARGET_ENV="production"
+             elif [ "$BRANCH_NAME" = "develop" ]; then
+               TARGET_ENV="staging"
+             else
+               TARGET_ENV="development"
+             fi
+           fi
+          
+          # 3. Print the final resolved environment
+          echo "Deploying to the $TARGET_ENV environment"
+
+
+    
+
+  
