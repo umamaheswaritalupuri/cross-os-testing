@@ -1,0 +1,23 @@
+name: Deploy Application
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target deployment environment'
+        required: false
+        default: 'dev'  
+        type: string
+      version:
+        description: 'Execute unit tests before deploying?'
+        required: true
+        type: string
+     
+jobs:
+   job1:
+      runs-on: ubuntu-latest
+      steps:
+        steps:
+          - name: Print inputs directly
+            run: |
+              echo "Selected Branch: ${{ inputs.environment }}"
+              echo "Retry Attempts: ${{ inputs.version }}"
